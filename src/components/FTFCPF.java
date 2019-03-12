@@ -25,6 +25,7 @@ public class FTFCPF extends JFormattedTextField implements ComponentInterface {
             }
         });
         setColumns(10);
+
         /**
          * Formata o campo em uma mascara para CPF
          */
