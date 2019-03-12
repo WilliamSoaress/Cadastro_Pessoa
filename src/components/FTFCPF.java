@@ -13,14 +13,15 @@ public class FTFCPF extends JFormattedTextField implements ComponentInterface {
     private boolean obrigatorio;
     private String dica;
 
-    public FTFCPF(boolean obrigatorio, String dica){
+    public FTFCPF(boolean obrigatorio, String dica) {
         this.obrigatorio = obrigatorio;
         this.dica = dica;
-        addFocusListener(new FocusListener(){
-            public void focusLost(FocusEvent fe){
+        addFocusListener(new FocusListener() {
+            public void focusLost(FocusEvent fe) {
                 setBackground(Color.white);
             }
-            public void focusGained(FocusEvent fe){
+
+            public void focusGained(FocusEvent fe) {
                 setBackground(Color.yellow);
             }
         });
@@ -29,13 +30,14 @@ public class FTFCPF extends JFormattedTextField implements ComponentInterface {
         /**
          * Formata o campo em uma mascara para CPF
          */
-        try{
+        try {
             this.setFormatterFactory(new DefaultFormatterFactory(
                     new MaskFormatter("###.###.###-##")));
         } catch (ParseException e) {
             e.printStackTrace();
         }
     }
+
     @Override
     public void limpar() {
         setText("");
@@ -50,6 +52,7 @@ public class FTFCPF extends JFormattedTextField implements ComponentInterface {
     public boolean eObrigatorio() {
         return obrigatorio;
     }
+
     @Override
     public boolean eValido() {
         return true;

@@ -10,10 +10,10 @@ public class Database {
     private static Connection conexao;
     private static String user;
 
-    public static void main(String args[]) {
+    public static void main(String args[]){
         getConexao();
     }
-    //Nunca colocque um try com um catch vazio
+    //Nunca coloque um try com um catch vazio
 
     public static Connection getConexao() {
 
@@ -21,7 +21,7 @@ public class Database {
             existeConexao(conexao);
             if (conexao == null) {
                 Class.forName("org.firebirdsql.jdbc.FBDriver");
-                conexao = DriverManager.getConnection("jdbc:firebirdsql://localhost/C:/Users/Halef Dorigan/IdeaProjects/Cadastro_Pessoa/src/database/DBPROD.FDB", "SYSDBA","masterkey");
+                conexao = DriverManager.getConnection("jdbc:firebirdsql://localhost/C:/DBPROD.FDB", "SYSDBA", "masterkey");
                 existeConexao(conexao);
             }
             return conexao;
@@ -59,13 +59,14 @@ public class Database {
         }
     }
 
-    /**Tem a função de verificar a existência de uma conexão ativa.
+    /**
+     * Tem a função de verificar a existência de uma conexão ativa.
      *
-     * @param con   Recebe uma objeto Connection
+     * @param con Recebe uma objeto Connection
      * @return true Se tiver uma conexão ativa
      */
     public static boolean existeConexao(Connection con) {
-        if(con != null){
+        if (con != null) {
             System.out.println("Existe uma conexão ativa!");
             return true;
         } else {
@@ -74,7 +75,7 @@ public class Database {
         }
     }
 
-    public static void fechaConexao(Connection con){
+    public static void fechaConexao(Connection con) {
         con = null;
         System.out.println("Conexão com" + con + " encerrada");
     }
