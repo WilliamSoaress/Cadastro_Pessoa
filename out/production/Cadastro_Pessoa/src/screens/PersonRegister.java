@@ -17,7 +17,6 @@ public class PersonRegister extends SysDefaultScreen {
     private FTFPhone ftfPhone = new FTFPhone(true,"Telefone");
     private FTFCPF ftfCpf = new FTFCPF(true,"CPF");
     private TextField tfEmail = new TextField(30,false,"E-Mail",true);
-
     public PersonRegister(){
         super("Cadastrar pessoa ...");
 
@@ -27,9 +26,14 @@ public class PersonRegister extends SysDefaultScreen {
         adicionaComponente(4,1,1,1,ftfPhone,true);
         adicionaComponente(5,1,1,1,ftfCpf,true);
         adicionaComponente(6,1,1,2,tfEmail,true);
-
+        atualizaTabela();
         habilitaCampos(false);
-        pack(); //Organiza os componentes na tela
+        //pack(); //Organiza os componentes na tela
+    }
+
+    public void atualizaTabela(){
+        criarTabela(new String[] {"ID","Nome","Endereço","Telefone","CPF","E-Mail"}, daoPerson.SQL_CONSULTAR,
+                this, new int[] {2,6,3,2,6,3});
     }
 
     @Override
@@ -39,7 +43,10 @@ public class PersonRegister extends SysDefaultScreen {
         person.setPhone_person(ftfPhone.getText());
         person.setCpf_person(ftfCpf.getText());
         person.setEmail_person(tfEmail.getText());
+        criarTabela(new String[] {"ID","Nome","Endereço","Telefone","CPF","E-Mail"}, daoPerson.SQL_CONSULTAR,
+                this, new int[] {2,6,3,2,6,3});
         daoPerson.inserir();
+        atualizaTabela();
     }
 
     public void alterarBD() {
@@ -50,11 +57,13 @@ public class PersonRegister extends SysDefaultScreen {
         person.setCpf_person(ftfCpf.getText());
         person.setEmail_person(tfEmail.getText());
         daoPerson.alterar();
+        atualizaTabela();
     }
 
     public void excluirBD() {
         person.setId_person(Integer.parseInt(tfId.getText()));
         daoPerson.excluir();
+        atualizaTabela();
     }
 
     public void preencherDados(int id) {
@@ -68,8 +77,8 @@ public class PersonRegister extends SysDefaultScreen {
        tfEmail.setText(person.getEmail_person());
     }
 
-    public void consultar(){
-        super.consultar();
-        new SearchScreen("Consulta de Pessoa", new String[] {"Código", "Nome"}, DAOPerson.SQL_CONSULTAR, this);
-    }
+//    public void consultar(){
+//        super.consultar();
+//        new SearchScreen("Consulta de Pessoa", new String[] {"Código", "Nome"}, DAOPerson.SQL_CONSULTAR, this);
+//    }
 }

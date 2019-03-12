@@ -1,11 +1,15 @@
 package screens;
 
 import components.ComponentInterface;
+import database.Database;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,25 +29,73 @@ public class SysDefaultScreen extends JInternalFrame implements ActionListener,D
 
     protected JPanel jpComponentes = new JPanel();
     private JPanel jpBotoes = new JPanel();
+    private JPanel jpTabela = new JPanel();
     private JButton jbIncluir = new JButton("Incluir");
     private JButton jbAlterar = new JButton("Alterar");
     private JButton jbExcluir = new JButton("Excluir");
-    private JButton jbConsultar = new JButton("Consultar");
+    //private JButton jbConsultar = new JButton("Consultar");
     private JButton jbConfirmar = new JButton("Confirmar");
     private JButton jbCancelar = new JButton("Cancelar");
     private List<ComponentInterface> campos = new ArrayList();
 
+//    Váriáveis para a tabela abaixo dos botões
+    DefaultTableModel dtm = new DefaultTableModel();
+
+    private Object[][] dados = {};
+    private JTable jTable= new JTable(dtm) {
+        @Override
+        public boolean isCellEditable(int linha, int coluna) {
+            return false;
+        }
+    };;
+    private JScrollPane jsp = new JScrollPane(jTable);
+
     public SysDefaultScreen(String titulo) {
         super(titulo, false, true, false, false);
-        getContentPane().add("West", jpComponentes);
+        getContentPane().add("North", jpComponentes);
         getContentPane().add("South", jpBotoes);
+
         jpComponentes.setLayout(new GridBagLayout());
         jpBotoes.setLayout(new GridLayout(1, 6));
+        jpBotoes.add("South",jpTabela);
         adicionarBotoes();
         pack();
         InitScreen.jdp.add(this);
         setVisible(true);
         habilitaBotoes();
+    }
+
+    public void criarTabela(String[] colunas, String sql,
+                            SysDefaultScreen ss, int[] tamColunas){
+        dtm.setDataVector(dados, colunas);
+        getContentPane().add(jsp);
+        setSize(800, 600);
+        dimensionaTabela(jTable,tamColunas);
+        setDefaultLocale(null);
+        setVisible(true);
+        List<String[]> dados = Database.consultaBanco(sql);
+        for (int i = 0; i < dados.size(); i++) {
+            dtm.addRow(dados.get(i));
+        }
+        jTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent me) {
+                if (me.getClickCount() == 2) {
+                    ss.setEstadoTela(4);
+                    ss.preencherDados(Integer.parseInt((String) jTable.getValueAt(jTable.getSelectedRow(), 0)));
+                    ss.habilitaBotoes();
+                }
+            }
+
+        });
+    }
+
+    public void dimensionaTabela(JTable table, int [] tamCol){
+
+        for (int i = 0; i < tamCol.length; i++){
+            table.getColumnModel().getColumn(i).setPreferredWidth(tamCol[i]);
+        }
+
     }
 
     public void adicionaComponente(int linha, int coluna, int linhas, int colunas, ComponentInterface componente, boolean dicaAtiva) {
@@ -77,7 +129,7 @@ public class SysDefaultScreen extends JInternalFrame implements ActionListener,D
         adicionarBotao(jbIncluir);
         adicionarBotao(jbAlterar);
         adicionarBotao(jbExcluir);
-        adicionarBotao(jbConsultar);
+        //adicionarBotao(jbConsultar);
         adicionarBotao(jbConfirmar);
         adicionarBotao(jbCancelar);
     }
@@ -108,7 +160,7 @@ public class SysDefaultScreen extends JInternalFrame implements ActionListener,D
         //tem dados na tela ja é logico pois ele ja é bollean então ele está se auto comparando
         jbAlterar.setEnabled(estadoTela == PADRAO && temDadosNaTela || estadoTela == CONSULTANDO);
         jbExcluir.setEnabled(estadoTela == PADRAO && temDadosNaTela || estadoTela == CONSULTANDO);
-        jbConsultar.setEnabled(estadoTela == PADRAO);
+        //jbConsultar.setEnabled(estadoTela == PADRAO);
         jbConfirmar.setEnabled(estadoTela != PADRAO);
         jbCancelar.setEnabled(estadoTela != PADRAO && estadoTela != CONSULTANDO);
 
@@ -143,7 +195,7 @@ public class SysDefaultScreen extends JInternalFrame implements ActionListener,D
             alterar();
         } else if (ae.getSource() == jbExcluir) {
             excluir();
-        } else if (ae.getSource() == jbConsultar) {
+        //} else if (ae.getSource() == jbConsultar) {
             consultar();
         } else if (ae.getSource() == jbConfirmar) {
             confirmar();
