@@ -11,29 +11,30 @@ public class PersonRegister extends SysDefaultScreen {
     Person person = new Person();
     DAOPerson daoPerson = new DAOPerson(person);
 
-    private TextField tfId = new TextField(3,false,"ID",false);
-    private TextField tfName = new TextField(40,true,"Nome",true);
-    private TextField tfEndereco = new TextField(40,true,"Endereço",true);
-    private FTFPhone ftfPhone = new FTFPhone(true,"Telefone");
-    private FTFCPF ftfCpf = new FTFCPF(true,"CPF");
-    private TextField tfEmail = new TextField(30,false,"E-Mail",true);
-    public PersonRegister(){
+    private TextField tfId = new TextField(3, false, "ID", false);
+    private TextField tfName = new TextField(40, true, "Nome", true);
+    private TextField tfEndereco = new TextField(40, true, "Endereço", true);
+    private FTFPhone ftfPhone = new FTFPhone(true, "Telefone");
+    private FTFCPF ftfCpf = new FTFCPF(true, "CPF");
+    private TextField tfEmail = new TextField(30, false, "E-Mail", true);
+
+    public PersonRegister() {
         super("Cadastrar pessoa ...");
 
-        adicionaComponente(1,1,1,1,tfId, true);
-        adicionaComponente(2,1,1,2,tfName,true);
-        adicionaComponente(3,1,1,2,tfEndereco,true);
-        adicionaComponente(4,1,1,1,ftfPhone,true);
-        adicionaComponente(5,1,1,1,ftfCpf,true);
-        adicionaComponente(6,1,1,2,tfEmail,true);
+        adicionaComponente(1, 1, 1, 1, tfId, true);
+        adicionaComponente(2, 1, 1, 2, tfName, true);
+        adicionaComponente(3, 1, 1, 2, tfEndereco, true);
+        adicionaComponente(4, 1, 1, 1, ftfPhone, true);
+        adicionaComponente(5, 1, 1, 1, ftfCpf, true);
+        adicionaComponente(6, 1, 1, 2, tfEmail, true);
         atualizaTabela();
         habilitaCampos(false);
         //pack(); //Organiza os componentes na tela
     }
 
-    public void atualizaTabela(){
-        criarTabela(new String[] {"ID","Nome","Endereço","Telefone","CPF","E-Mail"}, daoPerson.SQL_CONSULTAR,
-                this, new int[] {2,6,3,2,6,3});
+    public void atualizaTabela() {
+        criarTabela(new String[]{"ID", "Nome", "Endereço", "Telefone", "CPF", "E-Mail"}, daoPerson.SQL_CONSULTAR,
+                this, new int[]{2, 6, 3, 2, 6, 3});
     }
 
     @Override
@@ -43,8 +44,8 @@ public class PersonRegister extends SysDefaultScreen {
         person.setPhone_person(ftfPhone.getText());
         person.setCpf_person(ftfCpf.getText());
         person.setEmail_person(tfEmail.getText());
-        criarTabela(new String[] {"ID","Nome","Endereço","Telefone","CPF","E-Mail"}, daoPerson.SQL_CONSULTAR,
-                this, new int[] {2,6,3,2,6,3});
+        criarTabela(new String[]{"ID", "Nome", "Endereço", "Telefone", "CPF", "E-Mail"}, daoPerson.SQL_CONSULTAR,
+                this, new int[]{2, 6, 3, 2, 6, 3});
         daoPerson.inserir();
         atualizaTabela();
     }
@@ -67,14 +68,14 @@ public class PersonRegister extends SysDefaultScreen {
     }
 
     public void preencherDados(int id) {
-       person.setId_person(id);
-       daoPerson.consultar();
-       tfId.setText("" + person.getId_person());
-       tfName.setText(person.getName_person());
-       tfEndereco.setText(person.getAddress_person());
-       ftfPhone.setText(person.getPhone_person());
-       ftfCpf.setText(person.getCpf_person());
-       tfEmail.setText(person.getEmail_person());
+        person.setId_person(id);
+        daoPerson.consultar();
+        tfId.setText("" + person.getId_person());
+        tfName.setText(person.getName_person());
+        tfEndereco.setText(person.getAddress_person());
+        ftfPhone.setText(person.getPhone_person());
+        ftfCpf.setText(person.getCpf_person());
+        tfEmail.setText(person.getEmail_person());
     }
 
 //    public void consultar(){

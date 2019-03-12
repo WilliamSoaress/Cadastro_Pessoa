@@ -7,7 +7,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import javax.swing.*;
 
-public class InitScreen extends JFrame implements ActionListener,WindowListener {
+public class InitScreen extends JFrame implements ActionListener, WindowListener {
     public static JDesktopPane jdp = new JDesktopPane();
     public JMenu jmCadastros = new JMenu("Cadastros");
     public JMenu jmArquivo = new JMenu("Arquivo");

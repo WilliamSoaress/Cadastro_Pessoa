@@ -14,10 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * @author Halef Dorigan
  */
-public class SysDefaultScreen extends JInternalFrame implements ActionListener,DatabaseInterface{
+public class SysDefaultScreen extends JInternalFrame implements ActionListener, DatabaseInterface {
 
     private final int PADRAO = 0;
     private final int INCLUINDO = 1;
@@ -38,16 +37,17 @@ public class SysDefaultScreen extends JInternalFrame implements ActionListener,D
     private JButton jbCancelar = new JButton("Cancelar");
     private List<ComponentInterface> campos = new ArrayList();
 
-//    Váriáveis para a tabela abaixo dos botões
+    //    Váriáveis para a tabela abaixo dos botões
     DefaultTableModel dtm = new DefaultTableModel();
 
     private Object[][] dados = {};
-    private JTable jTable= new JTable(dtm) {
+    private JTable jTable = new JTable(dtm) {
         @Override
         public boolean isCellEditable(int linha, int coluna) {
             return false;
         }
-    };;
+    };
+    ;
     private JScrollPane jsp = new JScrollPane(jTable);
 
     public SysDefaultScreen(String titulo) {
@@ -57,7 +57,7 @@ public class SysDefaultScreen extends JInternalFrame implements ActionListener,D
 
         jpComponentes.setLayout(new GridBagLayout());
         jpBotoes.setLayout(new GridLayout(1, 6));
-        jpBotoes.add("South",jpTabela);
+        jpBotoes.add("South", jpTabela);
         adicionarBotoes();
         pack();
         InitScreen.jdp.add(this);
@@ -66,11 +66,11 @@ public class SysDefaultScreen extends JInternalFrame implements ActionListener,D
     }
 
     public void criarTabela(String[] colunas, String sql,
-                            SysDefaultScreen ss, int[] tamColunas){
+                            SysDefaultScreen ss, int[] tamColunas) {
         dtm.setDataVector(dados, colunas);
         getContentPane().add(jsp);
         setSize(800, 600);
-        dimensionaTabela(jTable,tamColunas);
+        dimensionaTabela(jTable, tamColunas);
         setDefaultLocale(null);
         setVisible(true);
         List<String[]> dados = Database.consultaBanco(sql);
@@ -90,9 +90,9 @@ public class SysDefaultScreen extends JInternalFrame implements ActionListener,D
         });
     }
 
-    public void dimensionaTabela(JTable table, int [] tamCol){
+    public void dimensionaTabela(JTable table, int[] tamCol) {
 
-        for (int i = 0; i < tamCol.length; i++){
+        for (int i = 0; i < tamCol.length; i++) {
             table.getColumnModel().getColumn(i).setPreferredWidth(tamCol[i]);
         }
 
@@ -195,7 +195,7 @@ public class SysDefaultScreen extends JInternalFrame implements ActionListener,D
             alterar();
         } else if (ae.getSource() == jbExcluir) {
             excluir();
-        //} else if (ae.getSource() == jbConsultar) {
+            //} else if (ae.getSource() == jbConsultar) {
             consultar();
         } else if (ae.getSource() == jbConfirmar) {
             confirmar();
