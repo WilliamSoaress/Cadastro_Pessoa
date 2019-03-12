@@ -7,12 +7,16 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import javax.swing.*;
 
+/*Adicionado a tela Sobre e outras implementações
+* por dossi
+* */
 public class InitScreen extends JFrame implements ActionListener, WindowListener {
     public static JDesktopPane jdp = new JDesktopPane();
     public JMenu jmCadastros = new JMenu("Cadastros");
     public JMenu jmArquivo = new JMenu("Arquivo");
     public JMenuItem jmiCadPessoa = new JMenuItem("Cadastrar Pessoa");
     public JMenuItem jmiSair = new JMenuItem("Sair da aplicação");
+    public JMenuItem jmiSobre = new JMenuItem("Sobre ..."); //Adicionado por Dossi
     public Dimension dm = new Dimension(1024, 798);
 
     public JMenuBar jmb = new JMenuBar();
@@ -31,6 +35,7 @@ public class InitScreen extends JFrame implements ActionListener, WindowListener
         jmb.add(jmCadastros);
 
         adicionaItemMenu(jmCadastros, jmiCadPessoa);
+        adicionaItemMenu(jmArquivo, jmiSobre);
         adicionaItemMenu(jmArquivo, jmiSair);
 
         setVisible(true);
@@ -61,6 +66,8 @@ public class InitScreen extends JFrame implements ActionListener, WindowListener
             if (opcao == JOptionPane.YES_OPTION) {
                 System.exit(0);
             }
+        } else if (ae.getSource() == jmiSobre) {
+            SplashScreen splashScreen = new SplashScreen();
         }
     }
 
