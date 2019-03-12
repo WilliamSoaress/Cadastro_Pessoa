@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Cadastro_Pessoa:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Cadastro_Pessoa_jar</output-path>
+    <root id="archive" name="Cadastro_Pessoa.jar">
+      <element id="module-output" name="Cadastro_Pessoa" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/jaybird-full-3.0.4.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
