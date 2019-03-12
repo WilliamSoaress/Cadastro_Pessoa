@@ -14,8 +14,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/screens/InitScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="57" column="35" lean-forward="true" selection-start-line="57" selection-start-column="35" selection-end-line="57" selection-end-column="35" />
+            <state relative-caret-position="170">
+              <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -164,7 +164,7 @@
       <window_info id="UI Designer" order="0" />
       <window_info id="Favorites" order="1" side_tool="true" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="3" sideWeight="0.498998" visible="true" weight="0.14588688" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" sideWeight="0.498998" visible="true" weight="0.14588688" />
       <window_info id="Structure" order="4" sideWeight="0.501002" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" weight="0.3293011" />
       <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.50064266" side_tool="true" weight="0.21505377" />
@@ -172,7 +172,7 @@
       <window_info anchor="bottom" id="Version Control" order="3" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" weight="0.3293011" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" sideWeight="0.4993573" visible="true" weight="0.21505377" />
+      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.4993573" visible="true" weight="0.21505377" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -469,8 +469,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/screens/InitScreen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="57" column="35" lean-forward="true" selection-start-line="57" selection-start-column="35" selection-end-line="57" selection-end-column="35" />
+        <state relative-caret-position="170">
+          <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -542,7 +542,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>iText7-Core-7.1.3</last-edited>
+          <last-edited>jaybird-full-3.0.4</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

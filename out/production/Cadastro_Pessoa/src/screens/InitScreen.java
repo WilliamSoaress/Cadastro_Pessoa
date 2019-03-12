@@ -8,7 +8,6 @@ public class InitScreen extends JFrame implements ActionListener{
         public static JDesktopPane jdp = new JDesktopPane();
         public JMenu jmCadastros = new JMenu("Cadastros");
         public JMenu jmArquivo = new JMenu("Arquivo");
-        public JMenuItem jmiPrint = new JMenuItem("Imprimir cadastros");
         public JMenuItem jmiCadPessoa = new JMenuItem("Cadastrar Pessoa");
         public JMenuItem jmiSair = new JMenuItem("Sair da aplicação");
 
@@ -26,7 +25,6 @@ public class InitScreen extends JFrame implements ActionListener{
             jmb.add(jmCadastros);
 
             adicionaItemMenu(jmCadastros, jmiCadPessoa);
-            adicionaItemMenu(jmArquivo, jmiPrint);
             adicionaItemMenu(jmArquivo, jmiSair);
 
             setVisible(true);
@@ -50,8 +48,6 @@ public class InitScreen extends JFrame implements ActionListener{
         public void actionPerformed(ActionEvent ae) {
             if (ae.getSource() == jmiCadPessoa) {
                 PersonRegister personRegister = new PersonRegister();
-            } else if (ae.getSource() == jmiPrint){
-
             } else if (ae.getSource() == jmiSair) {
                 int opcao = JOptionPane.showConfirmDialog(this, "Deseja realmente sair?", "Atenção", JOptionPane.YES_NO_OPTION);
                 if (opcao == JOptionPane.YES_OPTION) {
